@@ -5,6 +5,7 @@ import WeatherBody from './views/WeatherBody';
 import Forecast from './views/Forecast';
 import { useState } from "react";
 import { useEffect } from "react";
+import { weatherTypes } from "./constant";
 
 const api = {
   key: '766b389336c246ab9b5141950241012',
@@ -24,8 +25,11 @@ function App() {
       if(result.error) {
         console.log(result.error);
       } else {
-        console.log(result)
-        setWeather(result);
+        const name = result.location.name;
+        const temperature = result.current.temp_c;
+        const desc = result.current.condition.text;
+        const weatherIcon = Object.keys(weatherTypes).find(icon => weatherTypes[icon].includes(result.current.condition.code));
+        setWeather({ name , temperature , desc , weatherIcon });
       }
      
     }catch (e) {

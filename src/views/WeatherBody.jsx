@@ -1,11 +1,11 @@
-import clear from "../assets/icons/clear.svg";
-const WeatherBody = () => {
+/* eslint-disable react/prop-types */
+const WeatherBody = ({ weather }) => {
   return (
     <div className="weather-container">
-          <img src={clear} alt="" />
-          <h1>City Name</h1>
-          <p> 25°C</p>
-          <p>Partly Cloudy</p>
+          <img src={`/src/icons/${ weather.weatherIcon}.svg`}alt="icon" />
+          <h1>{ weather.name }</h1>
+          <p>{ weather.temperature }°C</p>
+          <p>{ weather.desc }</p>
         </div>
   )
 }
