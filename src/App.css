@@ -48,26 +48,30 @@ form {
 .forecast-container {
   margin-top: 1rem;
   background-color: #8b8ba7;
+}
+
+.forecast-item-wrapper {
+  margin-top: 1rem;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
 
-.forecast-container::-webkit-scrollbar {
+.forecast-item-wrapper::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-.forecast-container::-webkit-scrollbar-track {
+.forecast-item-wrapper::-webkit-scrollbar-track {
   background: none;
   border-color: transparent;
 }
 
-.forecast-container::-webkit-scrollbar-thumb {
+.forecast-item-wrapper::-webkit-scrollbar-thumb {
   border-radius: 15px;
   background-color: #8b8ba7;
 }
 
-.forecast-container h2 {
+.forecast-item-wrapper h2 {
   margin-bottom: 1.2rem;
 }
 
