@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Form = ({ search, setSearch }) => {
+const Form = ({ search, setSearch  , onHandleSearch }) => {
   return (
     <form className="form">
       <button>
@@ -27,9 +27,15 @@ const Form = ({ search, setSearch }) => {
         required=""
         type="text"
         onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={ (e) => {
+          if (e.key === 'Enter') {
+            onHandleSearch();
+            e.preventDefault();
+          }
+        }}
         value={search}
       />
-      <button className="reset" type="reset">
+      <button className="reset" type="search">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
