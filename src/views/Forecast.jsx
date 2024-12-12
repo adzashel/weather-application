@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { weatherTypes } from "../constant";
+
 
 const Forecast = ({ weather }) => {
   const forecastData = weather.forecast;

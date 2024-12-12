@@ -3,28 +3,32 @@ import Form from "./views/Form";
 import WeatherBody from "./views/WeatherBody";
 import Forecast from "./views/Forecast";
 import { useState } from "react";
-import { useEffect } from "react";
 import { weatherTypes } from "./constant";
+import NoResult from "./views/NoResult";
 
 const api = {
   key: "766b389336c246ab9b5141950241012",
   baseURL: "http://api.weatherapi.com/v1/forecast.json",
 };
 
-
-
 function App() {
   const [weather, setWeather] = useState({});
   const [search, setSearch] = useState("");
+  const [noResults, setNoResults] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   // fetch api
   const handleSearch = async () => {
+    setNoResults(false);
+    setLoader(true);
     try {
       const data = await fetch(
         `${api.baseURL}?key=${api.key}&q=${search}&days=7`
       );
+      if (!data.ok) {
+        throw new Error();
+      }
       const result = await data.json();
-      const icon = result.forecast.forecastday[1].day.condition.code;
       if (result.error) {
         console.log(result.error);
       } else {
@@ -35,8 +39,6 @@ function App() {
         const weatherIcon = Object.keys(weatherTypes).find((icon) =>
           weatherTypes[icon].includes(result.current.condition.code)
         );
-        
-        
         setWeather({
           name,
           temperature,
@@ -45,9 +47,10 @@ function App() {
           forecast,
         });
         setSearch("");
+        setLoader(false);
       }
-    } catch (e) {
-      console.log("Error fetching weather", e);
+    } catch {
+      setNoResults(true);
     }
   };
 
@@ -59,8 +62,21 @@ function App() {
           setSearch={setSearch}
           onHandleSearch={handleSearch}
         />
-        <WeatherBody weather={weather} />
-        <Forecast weather={weather} />
+        {noResults ? (
+          <NoResult search={search} />
+        ) : (
+          <>
+            {loader ? (
+              <div className="loading">
+                <div class="loader"></div> 
+                Loading...
+              </div>
+            ) : (
+              <WeatherBody weather={weather} />
+            )}
+            <Forecast weather={weather} />
+          </>
+        )}
       </div>
     </>
   );
