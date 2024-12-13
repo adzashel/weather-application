@@ -8,4 +8,4 @@ const NoResult = ({ search }) => {
   )
 }
 
-export default NoResult
+export default NoResult;

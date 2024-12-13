@@ -11,7 +11,7 @@ const api = {
   baseURL: "http://api.weatherapi.com/v1/forecast.json",
 };
 
-function App() {
+const  App = ()  => {
   const [weather, setWeather] = useState({});
   const [search, setSearch] = useState("");
   const [noResults, setNoResults] = useState(false);
