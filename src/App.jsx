@@ -8,7 +8,7 @@ import NoResult from "./views/NoResult";
 
 const api = {
   key: "766b389336c246ab9b5141950241012",
-  baseURL: "http://api.weatherapi.com/v1/forecast.json",
+  baseURL: "https://api.weatherapi.com/v1/forecast.json",
 };
 
 const  App = ()  => {
