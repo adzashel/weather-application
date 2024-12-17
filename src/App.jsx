@@ -3,7 +3,9 @@ import Form from "./views/Form";
 import WeatherBody from "./views/WeatherBody";
 import Forecast from "./views/Forecast";
 import { useState } from "react";
-import { weatherTypes } from "./constant";
+import clear from './icons/clear.svg';
+import icons from './constant'
+
 import NoResult from "./views/NoResult";
 
 const api = {
@@ -11,7 +13,7 @@ const api = {
   baseURL: "https://api.weatherapi.com/v1/forecast.json",
 };
 
-const  App = ()  => {
+const App = () => {
   const [weather, setWeather] = useState({});
   const [search, setSearch] = useState("");
   const [noResults, setNoResults] = useState(false);
@@ -29,6 +31,9 @@ const  App = ()  => {
         throw new Error();
       }
       const result = await data.json();
+      // icon
+      const weatheIcon = icons[result.current.condition.code] || clear;
+
       if (result.error) {
         console.log(result.error);
       } else {
@@ -36,14 +41,12 @@ const  App = ()  => {
         const temperature = Math.floor(result.current.temp_c);
         const forecast = result.forecast.forecastday;
         const desc = result.current.condition.text;
-        const weatherIcon = Object.keys(weatherTypes).find((icon) =>
-          weatherTypes[icon].includes(result.current.condition.code)
-        );
+        const icon  = weatheIcon;
         setWeather({
           name,
           temperature,
           desc,
-          weatherIcon,
+          icon,
           forecast,
         });
         setSearch("");
@@ -68,7 +71,7 @@ const  App = ()  => {
           <>
             {loader ? (
               <div className="loading">
-                <div class="loader"></div> 
+                <div className="loader"></div>
                 Loading...
               </div>
             ) : (
@@ -80,6 +83,6 @@ const  App = ()  => {
       </div>
     </>
   );
-}
+};
 
 export default App;
