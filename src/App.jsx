@@ -60,7 +60,8 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <Form
+       <div className="wrapper">
+       <Form
           search={search}
           setSearch={setSearch}
           onHandleSearch={handleSearch}
@@ -80,6 +81,7 @@ const App = () => {
             <Forecast weather={weather} />
           </>
         )}
+       </div>
       </div>
     </>
   );
