@@ -263,7 +263,8 @@ margin-top: 1rem;
 
   .weather-container {
     margin-top: 2rem;
-    margin-right: 4rem;
+    margin-right: 5rem;
+    margin-left: -2rem;
   }
 
   .weather-container img {
@@ -316,11 +317,14 @@ margin-top: 1rem;
       font-size: 1rem;
     }
 
+    .forecast-container {
+      height: 150px;
+    }
+
     .forecast-item-wrapper {
       flex-direction: column;
-      flex-wrap: nowrap;
-      overflow-x: hidden;
-      overflow-y: scroll;
+      flex-wrap: wrap;
+      overflow: auto;
     }
 
     .forecast-item {
@@ -339,6 +343,10 @@ margin-top: 1rem;
 
     .days {
       display: flex;
+    }
+
+    .forecast-container h2 {
+      font-size: 1rem;
     }
 
 }

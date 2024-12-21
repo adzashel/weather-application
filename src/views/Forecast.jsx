@@ -6,7 +6,7 @@ const Forecast = ({ weather }) => {
     <div>
       {/* daily forecast */}
       <div className="forecast-container">
-        <h2>Daily Forecast</h2>
+        <h2>Forecast for 7 Days</h2>
         <div className="forecast-item-wrapper">
           {forecastData
             ? forecastData.map((item, index) => (
@@ -19,10 +19,10 @@ const Forecast = ({ weather }) => {
                   />
                   <span className="day">
                     {Math.floor(item.day.mintemp_c)}
-                    °C
+                    °C 
                   </span>
                   <span className="days">
-                    / {Math.floor(item.day.maxtemp_c)}
+                     / {Math.floor(item.day.maxtemp_c)}
                     C
                   </span>
                 </div>
