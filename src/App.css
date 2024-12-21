@@ -242,24 +242,28 @@ margin-top: 1rem;
   font-weight: 600;
 }
 
+.days {
+  display: none;
+}
+
 /* mobile section */
 @media only screen and (min-width: 360px) and (max-width : 760px) {
   .container {
     width: 200%;
     margin-left: -5rem;
-    height: 100vh;
+    height: 100vh !important;
     border-radius: 0;
   }
     .wrapper {
       margin-top: 3rem;
     }
   .form {
-    margin-left: 4rem;
+    margin-left: 5rem;
   }
 
   .weather-container {
     margin-top: 2rem;
-    margin-right: 5.5rem;
+    margin-right: 4rem;
   }
 
   .weather-container img {
@@ -269,9 +273,9 @@ margin-top: 1rem;
 
   .forecast-container {
     width: 270px;
-    margin-right: -5rem;
-    margin-left: 2rem;
-    margin-top: 4rem;
+    margin-right: -4rem;
+    margin-left: 3rem;
+    margin-top: 2rem;
   }
 
   .loading {
@@ -283,6 +287,10 @@ margin-top: 1rem;
     display: none;
   }
 
+  .forecast-item {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
 
     .weather-container p {
       font-size: 2rem
@@ -307,4 +315,30 @@ margin-top: 1rem;
     .mobile-ver .description {
       font-size: 1rem;
     }
+
+    .forecast-item-wrapper {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    .forecast-item {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .forecast-item img{
+      margin-left: -4rem;
+      margin-top: -3px;
+    }
+
+    .day {
+      margin-right: -4.5rem;
+    }
+
+    .days {
+      display: flex;
+    }
+
 }

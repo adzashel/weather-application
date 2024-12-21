@@ -17,10 +17,14 @@ const Forecast = ({ weather }) => {
                     alt=""
                     className="weather-icon"
                   />
-                  <p className="day">
+                  <span className="day">
                     {Math.floor(item.day.mintemp_c)}
                     °C
-                  </p>
+                  </span>
+                  <span className="days">
+                    / {Math.floor(item.day.maxtemp_c)}
+                    C
+                  </span>
                 </div>
               ))
             : null}
