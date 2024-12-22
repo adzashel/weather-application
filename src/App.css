@@ -251,6 +251,10 @@ margin-top: 1rem;
 
 /* mobile section */
 @media only screen and (min-width: 360px) and (max-width : 760px) {
+  body {
+    overflow-y: hidden;
+  }
+  
   .container {
     width: 200%;
     margin-left: -5rem;
@@ -322,33 +326,50 @@ margin-top: 1rem;
 
     .forecast-container {
       height: 150px;
-      overflow: auto;
+     overflow: auto;
+     margin-top: 3rem;
     }
+   
 
     .forecast-item-wrapper {
-      display: block;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
     }
 
     .forecast-item {
+      margin-bottom: 14px;
       display: flex;
       justify-content: space-between;
     }
     
     .forecast-item img{
       margin-left: -4rem;
-      margin-top: -3px;
+      margin-top: -0.5rem;
     }
 
     .day {
       margin-right: -4.5rem;
+      font-size: 12px;
     }
 
     .days {
       display: flex;
+      font-size: 12px;
     }
 
     .forecast-container h2 {
       font-size: 1rem;
     }
 
+      .weather-temp {
+        font-size: 0.8rem;
+      }
+
+  
+
+      .weather-container .para {
+        font-size: 15px;
+        margin-top: 2rem;
+      }
 }
