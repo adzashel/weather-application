@@ -53,6 +53,7 @@ form {
 
 
 .forecast-item-wrapper {
+  height: 70px;
   margin-top: 1rem;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -78,6 +79,7 @@ form {
 }
 
 .forecast-item {
+
   text-align: center;
 }
 
@@ -216,12 +218,15 @@ backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.2);
 padding: 0.5rem;
 margin-top: 1rem;
+
 }
 
 
 
 .forecast-item {
+  display: flex;
   margin-right: 1rem;
+  flex-direction: column;
 }
 
 .forecast-item-wrapper   {
@@ -229,15 +234,17 @@ margin-top: 1rem;
 }
 
 
+
 .weather-icon {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-left: 12px;
 }
 
 .day {
-  font-size: 15px;
+  font-size: 12x;
   font-weight: 600;
+  margin-bottom: -1rem;
 }
 
 .weather-temp{ 
@@ -365,8 +372,6 @@ margin-top: 1rem;
       .weather-temp {
         font-size: 0.8rem;
       }
-
-  
 
       .weather-container .para {
         font-size: 15px;

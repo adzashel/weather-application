@@ -25,7 +25,7 @@ const App = () => {
     setLoader(true);
     try {
       const data = await fetch(
-        `${api.baseURL}?key=${api.key}&q=${search}&days=7`
+        `${api.baseURL}?key=${api.key}&q=${search}&days=4`
       );
       if (!data.ok) {
         throw new Error();
