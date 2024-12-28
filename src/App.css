@@ -79,7 +79,6 @@ form {
 }
 
 .forecast-item {
-
   text-align: center;
 }
 
@@ -333,20 +332,20 @@ margin-top: 1rem;
 
     .forecast-container {
       height: 150px;
-     overflow: auto;
      margin-top: 3rem;
     }
-   
 
     .forecast-item-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
+      flex-basis: 100%;
+      margin-right: 0;
+      display: block;
+      height: 90px;
     }
-
+   
     .forecast-item {
-      margin-bottom: 14px;
+      margin-bottom: 1rem;
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
     }
     
