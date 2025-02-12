@@ -18,21 +18,34 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [noResults, setNoResults] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [hourlyForecast , setHourlyForecast] = useState([]);
 
+
+  // function to filter time that contains next 24 hours
+  const filteredCombinedData = (combinedHourlyData) => {
+    const currentHour = new Date().setMinutes(0,0,0);
+    const next24Hours = currentHour + 24 * 60 * 60 * 1000; // in milliseconds
+
+    const next24HoursData = combinedHourlyData.filter(({time}) => {
+      const forecastTime = new Date(time).getTime();
+      return forecastTime >= currentHour && forecastTime <= next24Hours
+    })
+    // console.log(next24HoursData)
+    setHourlyForecast(next24HoursData)
+  }
   // fetch api
   const handleSearch = async () => {
     setNoResults(false);
     setLoader(true);
     try {
       const data = await fetch(
-        `${api.baseURL}?key=${api.key}&q=${search}&days=4`
+        `${api.baseURL}?key=${api.key}&q=${search}&days=2`
       );
       if (!data.ok) {
         throw new Error();
       }
       const result = await data.json();
-      // icon
-      const weatheIcon = icons[result.current.condition.code] || clear;
+      const weatherIcon = Object.keys(icons).find(icon => icons[icon].includes(result.current.condition.code));
 
       if (result.error) {
         console.log(result.error);
@@ -40,20 +53,27 @@ const App = () => {
         const name = result.location.name;
         const temperature = Math.floor(result.current.temp_c);
         const forecast = result.forecast.forecastday;
+        const hourly = forecast.map(data => {
+          return data.hour;
+        });
+        const combinedHourlyData = [...hourly[0] , ...hourly[1]];
+        filteredCombinedData(combinedHourlyData);
         const desc = result.current.condition.text;
-        const icon  = weatheIcon;
+
         setWeather({
           name,
           temperature,
+          weatherIcon,
           desc,
-          icon,
           forecast,
         });
         setSearch("");
         setLoader(false);
+        console.log(weatherIcon)
       }
-    } catch {
+    } catch(err) {
       setNoResults(true);
+      console.log(err)
     }
   };
 
@@ -78,7 +98,7 @@ const App = () => {
             ) : (
               <WeatherBody weather={weather} />
             )}
-            <Forecast weather={weather} />
+            <Forecast weather={weather} forecastData = { hourlyForecast }/>
           </>
         )}
        </div>

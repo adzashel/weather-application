@@ -1,28 +1,29 @@
 /* eslint-disable no-undef */
-const Forecast = ({ weather }) => {
-  const forecastData = weather.forecast;
-  console.log(forecastData);
+import icons from '../constant'
+const Forecast = ({ weather , forecastData}) => {
+  // convert epoch time to local time
+  
   return (
     <div>
       {/* daily forecast */}
       <div className="forecast-container">
-        <h2>Forecast for 7 Days</h2>
+        <h2>24 Hours Forecast</h2>
         <div className="forecast-item-wrapper">
           {forecastData
             ? forecastData.map((item, index) => (
                 <div key={index} className="forecast-item">
-                  <p className="weather-temp">{item.date}</p>
+                  <p className="weather-temp">{ item.condition.text}</p>
                   <img
-                    src={item.day.condition.icon}
+                    src={`src/icons/${weather.weatherIcon}.svg`}
                     alt=""
                     className="weather-icon"
                   />
                   <span className="day">
-                    {Math.floor(item.day.mintemp_c)}
+                    35
                     °C
                   </span>
                   <span className="days">
-                    / {Math.floor(item.day.maxtemp_c)}C
+                    / 37C
                   </span>
                 </div>
               ))
