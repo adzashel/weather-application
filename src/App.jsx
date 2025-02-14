@@ -1,7 +1,7 @@
 import "./App.css";
 import Form from "./views/Form";
 import WeatherBody from "./views/WeatherBody";
-import Forecast from "./views/Forecast";
+import Forecast from './views/Forecast'
 import { useState } from "react";
 import icons from "./constant";
 

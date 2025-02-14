@@ -53,7 +53,7 @@ form {
 
 
 .forecast-item-wrapper {
-  height: 70px;
+  height: 100px;
   margin-top: 1rem;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -80,6 +80,10 @@ form {
 
 .forecast-item {
   text-align: center;
+}
+
+.forecast-item .weather-icon {
+  margin: 0.5em;
 }
 
 .loading {
@@ -243,7 +247,7 @@ margin-top: 1rem;
 }
 
 .day {
-  font-size: 10x;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: -1rem;
 }
