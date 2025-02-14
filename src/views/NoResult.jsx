@@ -1,4 +1,4 @@
-import noResult from '../public/icons/no-result.svg'
+import noResult from '../../public/icons/no-result.svg'
 const NoResult = ({ search }) => {
   return (
     <div className="weather-container">

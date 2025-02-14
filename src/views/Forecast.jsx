@@ -34,7 +34,7 @@ const Forecast = ({ hourly }) => {
     <div className="forecast-item">
                   <p className="weather-temp">{ convertTimeEpoch(hourly.time_epoch  ,false ) }</p>
                   <img
-                    src={`./src/public/icons/${ dayOrNot ? weatherIcon : nightIcon }.png`}
+                    src={`../../public/icons/${ dayOrNot ? weatherIcon : nightIcon }.svg`}
                     alt=""
                     className="weather-icon"
                   />

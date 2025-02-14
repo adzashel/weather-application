@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
-import moduleName from '../public/icons/clear.png'
 const WeatherBody = ({ weather }) => {
   const cityName = weather.name;
   const temperature = weather.temperature;
   const description = weather.desc;
-  const icons = weather.weatherIcon;
+  const icons = `../../public/icons/${ weather.weatherIcon}.svg`;
 
   return (
     <div className="weather-container">
-      <img src={`./src/public/icons/${icons}.svg`} alt="icon" />
+      <img src={ icons } alt="icon" />
       <h1>{ cityName }</h1>
       <p className="temperature">{ temperature }°C</p>
       <p className="desc">{ description }</p>
