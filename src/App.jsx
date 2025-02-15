@@ -31,7 +31,7 @@ const App = () => {
       const forecastTime = new Date(time).getTime();
       return forecastTime >= currentHour && forecastTime <= next24Hours;
     });
-    console.log(next24HoursData);
+    // console.log(next24HoursData);
     setHourlyForecast(next24HoursData);
   };
   // fetch api
@@ -46,13 +46,18 @@ const App = () => {
         throw new Error();
       }
       const result = await data.json();
+      console.log(result);
       const weatherIcon = Object.keys(icons).find((icon) =>
+        icons[icon].includes(result.current.condition.code)
+      );
+      const nightIcons = Object.keys(icons).filter((icon) =>
         icons[icon].includes(result.current.condition.code)
       );
 
       if (result.error) {
         console.log(result.error);
       } else {
+        
         const name = result.location.name;
         const temperature = Math.floor(result.current.temp_c);
         const forecast = result.forecast.forecastday;
@@ -62,13 +67,16 @@ const App = () => {
         const combinedHourlyData = [...hourly[0], ...hourly[1]];
         filteredCombinedData(combinedHourlyData);
         const desc = result.current.condition.text;
-
+        const astro = result.current.is_day;
+        
         setWeather({
           name,
           temperature,
           weatherIcon,
           desc,
           forecast,
+          nightIcons,
+          astro
         });
         setSearch("");
         setLoader(false);
