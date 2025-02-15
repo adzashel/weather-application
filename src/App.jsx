@@ -7,6 +7,9 @@ import icons from "./constant";
 
 import NoResult from "./views/NoResult";
 
+
+
+
 const api = {
   key: "766b389336c246ab9b5141950241012",
   baseURL: "https://api.weatherapi.com/v1/forecast.json",
