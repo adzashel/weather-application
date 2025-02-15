@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import clear from '../../public/icons/clear.svg'
 const WeatherBody = ({ weather }) => {
   const cityName = weather.name;
   const temperature = weather.temperature;
@@ -7,7 +8,7 @@ const WeatherBody = ({ weather }) => {
 
   return (
     <div className="weather-container">
-      <img src={ icons } alt="icon" />
+      <img src={ !icons ? clear : icons } alt="icon" />
       <h1>{ cityName }</h1>
       <p className="temperature">{ temperature }°C</p>
       <p className="desc">{ description }</p>
